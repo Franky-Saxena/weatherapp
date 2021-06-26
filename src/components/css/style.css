@@ -133,7 +133,7 @@ body > span {
 }
 
 .location {
-    margin-top: 135px;
+    /* margin-top: 135px; */
     margin-left: 56px;
     font-size: 49px;
 }
@@ -141,7 +141,7 @@ body > span {
 .icon{
     width: 100px;
     height: 100px;
-    margin-left: 165px;
+    margin-left: 127px;
 }
 
 

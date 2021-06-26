@@ -4,8 +4,9 @@ import './css/style.css';
 
 const Tempapp = () => {
     const [city, setCity] = useState(null);
-    const [iCon, setICon] = useState(null);
+    const [iCon, setICon] = useState([]);
     const [search, setSearch] = useState("mumbai");
+    const [f, setF] = useState(false);
 
     useEffect(() => {
         const fetchApi = async () => {
@@ -13,11 +14,24 @@ const Tempapp = () => {
             const response = await fetch(url);
             // console.log(response);
             const resJson = await response.json();
-            setCity(resJson.main);
+            
+            // setICon(resJson);
+            if(resJson.cod!=="404" && search!==""){
+                setCity(resJson);
+                setICon(resJson.weather[0])
+                setF(true)
+                console.log("$$$$$$$$$$$$$$$$$ FOUND");
+            }
+            else{
+                setF(false);
+            }
             console.log(resJson);
         };
         fetchApi();
     }, [search]);
+
+    const urli = `https://openweathermap.org/img/wn/${iCon.icon}@2x.png`
+
     return (
         <>
 
@@ -29,21 +43,21 @@ const Tempapp = () => {
                 </div>
 
                 {
-                    !city ? (
+                    !f ? (
                         <p className="errorMsg">No Data Found</p>
                     ) : (
                         <div >
                             <div className="info">
-
+                                <img className="icon" src={urli} alt="" />
                                 <h1 className="location">
-                                    <i className="fas fa-street-view"></i>{search}
+                                    <i className="fas fa-street-view"></i>{city.name}
                                 </h1>
 
                                 <h2 className="temp">
-                                    {city.temp}°Cel
+                                    {city.main.temp}°Cel
                                 </h2>
 
-                                <h3 className="tempmin_max"> Min : {city.temp_min}°Cel | Max : {city.temp_max}°Cel </h3>
+                                <h3 className="tempmin_max"> Min : {city.main.temp_min}°Cel | Max : {city.main.temp_max}°Cel </h3>
                             </div>
 
                             <div className="wave -one"></div>

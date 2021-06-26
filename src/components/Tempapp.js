@@ -14,15 +14,15 @@ const Tempapp = () => {
             const response = await fetch(url);
             // console.log(response);
             const resJson = await response.json();
-            
+
             // setICon(resJson);
-            if(resJson.cod!=="404" && search!==""){
+            if (resJson.cod !== "404" && search !== "") {
                 setCity(resJson);
                 setICon(resJson.weather[0])
                 setF(true)
                 console.log("$$$$$$$$$$$$$$$$$ FOUND");
             }
-            else{
+            else {
                 setF(false);
             }
             console.log(resJson);
@@ -30,7 +30,7 @@ const Tempapp = () => {
         fetchApi();
     }, [search]);
 
-    const urli = `https://openweathermap.org/img/wn/${iCon.icon}@2x.png`
+    const urli = `https://openweathermap.org/img/wn/${iCon.icon}@2x.png`;
 
     return (
         <>
@@ -48,7 +48,10 @@ const Tempapp = () => {
                     ) : (
                         <div >
                             <div className="info">
-                                <img className="icon" src={urli} alt="" />
+                                <div className="iconAndName">
+                                    <img className="icon" src={urli} alt="" />
+                                    <h2> {iCon.main} </h2>
+                                </div>
                                 <h1 className="location">
                                     <i className="fas fa-street-view"></i>{city.name}
                                 </h1>

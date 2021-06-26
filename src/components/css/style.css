@@ -133,7 +133,6 @@ body > span {
 }
 
 .location {
-    margin-top: 24px;
     margin-left: 56px;
     font-size: 49px;
 }
@@ -141,9 +140,18 @@ body > span {
 .icon{
     width: 100px;
     height: 100px;
-    margin-left: 127px;
 }
 
+.iconAndName {
+    margin-top: 22px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.iconAndName h2 {
+    margin-top: 31px;
+}
 
 .temp {
     margin-top: 48px;

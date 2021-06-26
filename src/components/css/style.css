@@ -107,7 +107,7 @@ html {
         height: 80vh;
     }
     .wave {
-        top: 100%;
+        top: 10%;
     }
     #weathercon {
         font-size: 5em;
